@@ -7,6 +7,7 @@ import ErrorComponent from "./ErrorComponent";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AuthProvider, { useAuth } from "./AuthContext";
 import LogoutComponent from "./LogoutComponent";
+import AddUpdateTodoComponent from "./AddUpdateTodoComponent";
 
 function RouteAuthCheck({ children }) {
     const authContext = useAuth();
@@ -46,6 +47,12 @@ export default function TodoApp() {
                             // <RouteAuthCheck>
                             <LogoutComponent />
                             // </RouteAuthCheck>
+                        } />
+
+                        <Route path="/todos/:id" element={
+                            <RouteAuthCheck>
+                                <AddUpdateTodoComponent />
+                            </RouteAuthCheck>
                         } />
 
                         <Route path="*" element={<ErrorComponent />} />
