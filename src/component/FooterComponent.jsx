@@ -8,6 +8,7 @@ export default function FooterComponent() {
 
     function showResponse() {
         setTimeout(() => {
+            console.log("GLobal Message: " + auth.response);
             auth.setResp("");
         }, 2000);
     }
@@ -18,7 +19,7 @@ export default function FooterComponent() {
                 auth.response !== ""
                 &&
                 <div className="container m-5">
-                    <p className="alert alert-danger">{auth.response}</p>
+                    <p className="alert alert-info">{auth.response}</p>
                 </div>
             }
 

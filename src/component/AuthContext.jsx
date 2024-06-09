@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { todoApiClient } from "../restApis/CommonApiUtil";
 
 const context = createContext();
 
@@ -29,6 +30,15 @@ export default function AuthProvider({ children }) {
     function logout() {
         setAuthenticated(false);
     }
+
+
+    //Defined Interceptors:
+    todoApiClient.interceptors.request.use(
+        (config) => {
+            // console.log("Interceptor Called");
+            return config;
+        }
+    );
 
     return (
         <context.Provider value={{ username, login, logout, isAuthenticated, response, setResp }}>

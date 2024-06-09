@@ -39,29 +39,30 @@ export default function AddUpdateTodoComponent() {
 
         console.log("Submit Result :: {}", todo);
 
-        if (id === -1) {
+        if (id === "-1") {
             //Add new Todo:
             addTodo(todo)
                 .then(res => {
-                    auth.setResp("Todo Craeted Successfully");
+                    auth.setResp("Todo Created Successfully");
                     navigateTo("/todos");
                 })
                 .catch(err => {
                     console.error("Error while creating new todo :: {}", err);
                     auth.setResp("Error while creating new todo");
-                })
+                });
         } else {
             //Update existed Todo:
             todo.id = id;
             updateTodo(todo)
                 .then(res => {
+                    console.log(res);
                     auth.setResp("Todo Updated Successfully");
                     navigateTo("/todos");
                 })
                 .catch(err => {
                     console.error("Error while updating todo :: {}", err);
                     auth.setResp("Error while updating todo");
-                })
+                });
         }
     }
 
@@ -105,7 +106,7 @@ export default function AddUpdateTodoComponent() {
 
                             <fieldset className="from-group">
                                 <label className="p-2 fw-bold">Status</label>
-                                <Field as="select" className="form-control" name="status" defaultValue="false">
+                                <Field as="select" className="form-control" name="status" value={status}>
                                     <option value="true" >Completed</option>
                                     <option value="false">Incomplete</option>
                                 </Field>
