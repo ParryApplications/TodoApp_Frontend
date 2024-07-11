@@ -13,9 +13,10 @@ function RouteAuthCheck({ children }) {
     const authContext = useAuth();
 
     if (authContext.isAuthenticated) {
+        // console.log("Auth context is authenticated");
         return children;
     }
-
+    // console.log("Auth context redirecting to login");
     return <Navigate to="/login" />
 }
 

@@ -12,8 +12,8 @@ export default function LoginComponent() {
     //AuthContext:
     const authContext = useAuth();
 
-    function loginHandler() {
-        if (authContext.login(username, password)) {
+    async function loginHandler() {
+        if (await authContext.login(username, password)) {
             setLoginErrorFlag(false);
             navigateTo(`/welcome`);
         } else {
